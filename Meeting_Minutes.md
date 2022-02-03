@@ -76,10 +76,13 @@ Paw Buddy
 Dog Dates
 
 ## Meeting Outcome:
+We completed the project proposal
+We set up a task board on gitlab
+We emailed the prof to clarify some questions
 
 
 ## Action items:
 
 
 ## Next meeting:
-
+Tuesday Feb. 8 @ 3:00pm
