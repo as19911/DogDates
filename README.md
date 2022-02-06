@@ -24,7 +24,7 @@ A web application for finding new playdates for your dog!
 * Languages and tools used in this project can be found [here](https://github.com/Aiphox/DogDates/wiki#tools-and-technologies).
 
 ## Architecture Design
-* Please see the [Wiki Page]() for the block diagram.
+* Please see the [Wiki Page](https://github.com/Aiphox/DogDates/wiki#system-architecture) for the block diagram.
 
 ## Meeting Minutes
 * Meeting minutes can be found [here](https://github.com/Aiphox/DogDates/wiki/Meetings-Tracking#meeting-minutes).
