@@ -21,7 +21,7 @@ This project will be similar to a dating app but will be for making playdates fo
 ## Core Features
 * Create account
 * User login
-* Create and update profile (information about user and dog)
+* Create or update profile (information about user and dog)
   * Fill out text fields (drop-down menu of locations)
   * Upload pictures
   * Upload video
@@ -30,7 +30,6 @@ This project will be similar to a dating app but will be for making playdates fo
 * Like or dislike a user 
 * Match with a user (unlock the ability to view extra user information)
 * Receive a notification when users match with you
-* Chat feature
 
 ## Languages and Tools
 * Front end: React
