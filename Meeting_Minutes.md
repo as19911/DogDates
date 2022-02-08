@@ -19,7 +19,7 @@ Microsoft team
 Realtor 
 Check-in system for classes
 
-##Evaluation of ideas:
+## Evaluation of ideas:
 
 ### Check-in system for classes:
 -Database too complicated
