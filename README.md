@@ -27,7 +27,7 @@ This project will be similar to a dating app but will be for making playdates fo
   * Upload video
   * Link to social media
 * View other users’ profiles
-* Like a user 
+* Like or dislike a user 
 * Match with a user (unlock the ability to view extra user information)
 * Receive a notification when users match with you
 * Chat feature
