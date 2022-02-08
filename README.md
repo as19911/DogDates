@@ -38,6 +38,7 @@ This project will be similar to a dating app but will be for making playdates fo
 
 ## Architecture Design
 * Please see the [Wiki Page](https://github.com/Aiphox/DogDates/wiki#system-architecture) for the block diagram.
+![System architecture block diagram](https://github.com/Aiphox/DogDates/blob/main/System%20Architecture.PNG)
 
 ## Meeting Minutes
 * Meeting minutes can be found [here](https://github.com/Aiphox/DogDates/wiki/Meetings-Tracking#meeting-minutes).
