@@ -21,14 +21,15 @@ This project will be similar to a dating app but will be for making playdates fo
 ## Core Features
 * Create account
 * User login
-* User profile (information about user and dog)
+* Create and update profile (information about user and dog)
   * Fill out text fields (drop-down menu of locations)
   * Upload pictures
   * Upload video
   * Link to social media
-* View other users’ profile
-* Match with users (unlock the ability to view extra user information)
-* Receive a notification when users find matches
+* View other users’ profiles
+* Like a user 
+* Match with a user (unlock the ability to view extra user information)
+* Receive a notification when users match with you
 * Chat feature
 
 ## Languages and Tools
