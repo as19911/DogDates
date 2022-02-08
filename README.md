@@ -22,10 +22,10 @@ This project will be similar to a dating app but will be for making playdates fo
 * Create account
 * User login
 * User profile (information about user and dog)
-* Fill out text fields (drop-down menu of locations)
-* Upload pictures
-* Upload video
-* Link to social media
+  * Fill out text fields (drop-down menu of locations)
+  * Upload pictures
+  * Upload video
+  * Link to social media
 * View other users’ profile
 * Match with users (unlock the ability to view extra user information)
 * Receive a notification when users find matches
@@ -37,7 +37,6 @@ This project will be similar to a dating app but will be for making playdates fo
 * Database: MongoDB
 
 ## Architecture Design
-* Please see the [Wiki Page](https://github.com/Aiphox/DogDates/wiki#system-architecture) for the block diagram.
 ![System architecture block diagram](https://github.com/Aiphox/DogDates/blob/main/System%20Architecture.PNG)
 
 ## Meeting Minutes
