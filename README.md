@@ -11,7 +11,7 @@ A web application for finding new playdates for your dog!
 | Yelizaveta Yashin | LizaYa         | yashiny@myumanitoba.ca  |
 | Zhijie Zheng      | ZhijieZheng-UM | zhengz1@myumanitoba.ca  |
 
-## Team Learder
+## Team Leader
 * Shawn Lanting
 
 ## Description
