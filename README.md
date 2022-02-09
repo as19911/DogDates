@@ -1,5 +1,5 @@
-# Doggie Dating
-A web application for finding new playdates for your dog!
+# Dog Dates
+A web application to find new playdates for your dog!
 
 --------------
 
@@ -21,11 +21,9 @@ This project will be similar to a dating app but will be for making playdates fo
 ## Core Features
 * Create account
 * User login
-* Create or update profile (information about user and dog)
+* Create and update profile (information about user and dog)
   * Fill out text fields (drop-down menu of locations)
   * Upload pictures
-  * Upload video
-  * Link to social media
 * View other users’ profiles
 * Like or dislike a user 
 * Match with a user (unlock the ability to view extra user information)
