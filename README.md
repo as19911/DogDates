@@ -1,5 +1,5 @@
 # Dog Dates
-A web application to find play dates for your dog
+A dating app style web application to find play dates for your dog
 
 --------------
 
