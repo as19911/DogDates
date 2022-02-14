@@ -6,8 +6,8 @@ A dating-app style web application to find play dates for your dog
 ## Team Members
 | Member            | GitHub ID      | Email                   |
 |-------------------|----------------|-------------------------|
-| Sammul To         | sammulto       | duy5@myumanitoba.ca     |
-| Shawn Lanting     | Aiphox         | umlantin@myumanitoba.ca |
+| Shawn Lanting     | Aiphox         | umlantin@myumanitoba.ca     |
+| Sammul To         | sammulto       | duy5@myumanitoba.ca |
 | Yelizaveta Yashin | LizaYa         | yashiny@myumanitoba.ca  |
 | Zhijie Zheng      | ZhijieZheng-UM | zhengz1@myumanitoba.ca  |
 
