@@ -2,7 +2,12 @@
 * Install app: `npm install`
 * Run app: `npm run`
 
-# Supported API Calls
+
+# API Documentation and mock API
+This is the blueprint of the API for sprint 2.
+[API Documentation and Mock API](https://app.swaggerhub.com/apis/sammulto/DogDates/1.0.0#/)
+
+# Current Supported API Calls
 
 ## End point: /api/users
 
