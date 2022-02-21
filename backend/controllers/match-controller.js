@@ -6,7 +6,7 @@ const getListByUser = (req, res, next) => {
 
     //check if the uid valid
     const matchedList = fakeMatchList.find(list =>{
-        return list.id = uid;
+        return list.id === uid;
     });
 
     //return error if uid is not valid
@@ -23,7 +23,7 @@ const updateListByUser = (req, res, next) => {
 
     //check if the uid valid
     const matchedList = fakeMatchList.find(list =>{
-        return list.id = uid;
+        return list.id === uid;
     });
 
     //return error if uid is not valid

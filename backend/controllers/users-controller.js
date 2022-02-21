@@ -11,7 +11,7 @@ const getUserById = (req, res, next) => {
 
     //check if the uid valid
     const user = fakeUsersDB.find(usr =>{
-        return usr.id = uid;
+        return usr.id === uid;
     });
 
     //return error if uid is not valid
