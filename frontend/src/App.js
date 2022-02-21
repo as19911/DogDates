@@ -3,8 +3,8 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 import MainNavigation from "./shared/components/Navigation/MainNavigation";
 
-import Home from "./pages/Home";
-import Login from "./pages/Login";
+import Home from "./home/pages/Home";
+import Login from "./login/pages/Login";
 
 function App() {
   return (
