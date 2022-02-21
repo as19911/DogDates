@@ -1,5 +1,7 @@
 import React from "react";
 
+import RegisterButton from "../components/RegisterButton";
+
 import "./Home.css";
 
 export default function Home(props) {
@@ -15,6 +17,9 @@ export default function Home(props) {
         </div>
         <div className="home-page__image">
           <img src={props.image} alt={props.name} />
+        </div>
+        <div>
+        <RegisterButton />
         </div>
       </div>
     </div>
