@@ -27,14 +27,17 @@ const createUser = (req, res, next) => {
     const newId = fakeUsersDB.length+1;
 
     //get params from request body
-    const {userName, dogName, city} = req.body;
+    const {userName, dogName, city, profileImage, email, password} = req.body;
 
     //create a user
     const newUser = {
         id: newId,
         userName,
         dogName,
-        city
+        city,
+        profileImage,
+        email,
+        password
     };
 
     //add user to the fake DB
