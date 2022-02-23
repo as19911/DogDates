@@ -1,4 +1,5 @@
 const HttpError = require('../models/http-error');
+const fs = require('fs');
 let fakeUsersDB = require('../testingDatabase/fake-users.json');
 
 const getUserList = (req, res, next) => {
@@ -23,28 +24,6 @@ const getUserById = (req, res, next) => {
 }
 
 
-const createUser = (req, res, next) => {
-    const newId = fakeUsersDB.length+1;
-
-    //get params from request body
-    const {userName, dogName, city} = req.body;
-
-    //create a user
-    const newUser = {
-        id: newId,
-        userName,
-        dogName,
-        city
-    };
-
-    //add user to the fake DB
-    fakeUsersDB.push(newUser);
-
-
-    res.status(201).json(newUser);
-}
-
-
 const updateUserById = (req, res, next) => {
     const uid = req.params.uid;
 
@@ -53,13 +32,19 @@ const updateUserById = (req, res, next) => {
 
     //update user info
     const user = { ...fakeUsersDB.find(usr => usr.id === uid)};
-    const userIndex = fakeUsersDB.find(usr => usr.id === uid);
+    const userIndex = fakeUsersDB.findIndex(usr => usr.id === uid);
 
     user.userName = userName;
     user.city = city;
     user.dogName = dogName;
 
+    //update fake DB
     fakeUsersDB[userIndex] = user;
+    fs.writeFile('./testingDatabase/fake-users.json', JSON.stringify(fakeUsersDB), (err) => {
+        if(err){
+            console.log(err);
+        }
+    });
 
     //send response
     res.status(201).json({msg:'user updated.', user});
@@ -83,7 +68,6 @@ const deleteUserById = (req, res, next) => {
 
 
 exports.getUserById = getUserById;
-exports.createUser = createUser;
 exports.updateUserById = updateUserById;
 exports.deleteUserById = deleteUserById;
 exports.getUserList = getUserList;

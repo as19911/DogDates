@@ -10,9 +10,6 @@ router.get('/', controller.getUserList);
 //get the user by id
 router.get('/:uid', controller.getUserById);
 
-//create a user
-router.post('/', controller.createUser);
-
 //update user's info
 router.patch('/:uid', controller.updateUserById);
 
