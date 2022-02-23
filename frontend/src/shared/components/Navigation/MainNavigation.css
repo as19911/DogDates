@@ -1,0 +1,12 @@
+.main-navigation__header-nav {
+  display: block;
+}
+
+.main-navigation__title {
+  color: #ebebd3;
+}
+
+.main-navigation__title a {
+  text-decoration: none;
+  color: white;
+}

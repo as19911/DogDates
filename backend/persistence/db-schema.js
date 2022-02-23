@@ -1,0 +1,35 @@
+//this file defines the schema for MongoDB collections
+
+const mongoose = require('mongoose');
+
+const Schema = mongoose.Schema;
+
+const userSchema = new Schema({
+    userName: { type: String, required: true },
+    password: { type: String, required: true }, //should be the hash value of the password
+    ownerName: { type: String, required: true },
+    dogName: { type: String, required: true },
+    city: { type: String, required: true },
+    description: { type: String },
+    pictures: [String]
+});
+
+const likedListSchema = new Schema({
+    userName: { type: String, required: true },
+    liked: [String]
+});
+
+const matchedListSchema = new Schema({
+    userName: { type: String, required: true },
+    liked: [String]
+});
+
+const UserModel = mongoose.model('User', userSchema);
+const LikedListModel = mongoose.model('LikedList', likedListSchema);
+const MatchedListModel = mongoose.model('MatchedList', matchedListSchema);
+
+module.exports = { 
+    UserModel: UserModel,
+    LikedListModel: LikedListModel,
+    MatchedListModel: MatchedListModel
+};
