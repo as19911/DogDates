@@ -6,7 +6,6 @@ const createUser = async (req, res, next) => {
     //get params from request body
     const {userName, password, ownerName, dogName, city, description} = req.body;
 
-
     //create a user
     let newUser = {
         userName,

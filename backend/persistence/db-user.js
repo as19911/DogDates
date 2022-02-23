@@ -14,32 +14,31 @@ const hasUser = async (userName) => {
     let result = false;
 
     try{
-        result = await UserModel.find({ userName: userName });
+        const res= await UserModel.find({ userName: userName });
+        if(res.length !== 0){
+            result = true;
+        }
     } catch (error) {
         console.log('Error in DB FIND operation');
         console.log(error);
         return httpError;
     }
 
-    console.log('find user result ' + result);
     return result;
 };
 
 
 const addUser = async (userInfo) => {
 
-    userExists = hasUser(userInfo.userName);
+    let userExists = await hasUser(userInfo.userName);
 
-
-    if(userExists){
-        console.log('User exists');
+    if(userExists === true){
+        console.log('User already exists, not adding to DB.');
         throw new HttpError(
             'User name already exists, please choose a new user name.',
             400
         );
     }
-
-    console.log(userInfo);
 
     const newUser = new UserModel({
         userName: userInfo.userName,
@@ -52,7 +51,7 @@ const addUser = async (userInfo) => {
     });
 
     try{
-        //await newUser.save();
+        await newUser.save();
         console.log('New User Added');
     } catch (error) {
         console.log(error);
