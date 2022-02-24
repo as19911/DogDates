@@ -1,5 +1,7 @@
 const express = require('express');
 
+const { check } = require ('express-validator');
+
 const controller = require('../controllers/users-controller');
 
 const router = express.Router();
@@ -11,7 +13,7 @@ router.get('/', controller.getUserList);
 router.get('/:uid', controller.getUserById);
 
 //create a user
-router.post('/register',
+router.post('/',
 [
     check('userName')
     .not().isEmpty(),
@@ -22,7 +24,7 @@ router.post('/register',
     check('profileImage')
     .not().isEmpty(),
     check('email')
-    .normalizerEmail().isEmail(),
+    .normalizeEmail().isEmail(),
     check('password').isLength( {min:6})
 ],
  controller.createUser);

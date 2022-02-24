@@ -23,6 +23,9 @@ Parameters:
 * userName
 * dogName
 * city
+* profileImage
+* email
+* password
 
 ### `PATCH /api/users/:id` 
 Update user's info by id.   
