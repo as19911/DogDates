@@ -1,70 +1,88 @@
-const HttpError = require('../models/http-error');
-const fs = require('fs');
-let fakeUsersDB = require('../testingDatabase/fake-users.json');
+const HttpError = require("../models/http-error");
+const fs = require("fs");
+const { UserModel } = require("../persistence/db-schema");
 
-const getUserList = (req, res, next) => {
-    res.status(201).json({fakeUsersDB});
-}
+const DBfailedHttpError = new HttpError(
+  "Database operation failed, please try again",
+  500
+);
 
+/** TODO: Add validations to all the fields */
 
-const getUserById = (req, res, next) => {
-    const uid = req.params.uid;
+const getUserList = async (req, res, next) => {
+  const users = await UserModel.find().exec();
+  res.status(201).json(users);
+};
 
-    //check if the uid valid
-    const user = fakeUsersDB.find(usr =>{
-        return usr.id === uid;
-    });
+const getUserById = async (req, res, next) => {
+  const uid = req.params.uid;
 
-    //return error if uid is not valid
-    if(!user){
-        return next(new HttpError('User does not exist!', 404));
+  let user = false;
+  try {
+    let result = await UserModel.find({ uid: uid }).exec();
+    if (result.length !== 0) {
+      user = result[0];
     }
+  } catch (error) {
+    throw DBfailedHttpError;
+  }
+  //return error if uid is not valid
+  if (!user) {
+    return next(new HttpError("User does not exist!", 404));
+  }
 
-    res.status(201).json(user);
-}
+  res.status(201).json(user);
+};
 
-const updateUserById = (req, res, next) => {
-    const uid = req.params.uid;
+const updateUserById = async (req, res, next) => {
+  const uid = req.params.uid;
 
-    //get params from request body
-    const {userName, dogName, city} = req.body;
+  //get params from request body
+  const { userName, dogName, city } = req.body;
+  let user = null;
 
-    //update user info
-    const user = { ...fakeUsersDB.find(usr => usr.id === uid)};
-    const userIndex = fakeUsersDB.findIndex(usr => usr.id === uid);
+  //update user info
+  const result = await UserModel.find({ uid: uid }).exec();
+  if (result.length !== 0) user = result[0];
 
-    user.userName = userName;
-    user.city = city;
-    user.dogName = dogName;
-
-    //update fake DB
-    fakeUsersDB[userIndex] = user;
-    fs.writeFile('./testingDatabase/fake-users.json', JSON.stringify(fakeUsersDB), (err) => {
-        if(err){
-            console.log(err);
-        }
-    });
+  //return error if uid is not valid
+  if (!user) return next(new HttpError("User does not exist!", 404));
+  //user exists, replace the fields in the database
+  //TODO: allow to change part of the fields fields
+  else {
+    UserModel.findByIdAndUpdate(
+      user._id,
+      { userName: userName, city: city, dogName: dogName },
+      function (error) {
+        if (error) return next(DBfailedHttpError);
+      }
+    );
 
     //send response
-    res.status(201).json({msg:'user updated.', user});
-}
+    res.status(201).json({ msg: "user updated.", user });
+  }
+};
 
-const deleteUserById = (req, res, next) => {
-    const uid = req.params.uid;
-    const user = { ...fakeUsersDB.find(usr => usr.id === uid)};
+const deleteUserById = async (req, res, next) => {
+  const uid = req.params.uid;
+  let user = null;
 
-    //return error if uid is not valid
-    if(!user){
-        return next(new HttpError('User does not exist!', 404));
-    }
+  const result = await UserModel.find({ uid: uid }).exec();
+  if (result.length !== 0) user = result[0];
 
-    //remove user from fakeDB
-    fakeUsersDB = fakeUsersDB.filter(usr => usr.id !== uid);
+  //return error if uid is not valid
+  if (!user) {
+    return next(new HttpError("User does not exist!", 404));
+  }
 
-    //send response
-    res.status(201).json({msg:'user deleted.', user});
-}
+  //remove user from fakeDB
+  UserModel.findOneAndDelete({ _id: user._id }, function (error) {
+    if (error) return next(DBfailedHttpError);
+  });
 
+  //send response
+  res.status(201).json({ msg: "user deleted.", user });
+};
 
 exports.getUserById = getUserById;
 exports.updateUserById = updateUserById;

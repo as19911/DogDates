@@ -15,7 +15,7 @@ const DBfailedHttpError = new HttpError(
 const userLogin = async (req, res, next) => {
     const validationErrors = validationResult(req);
     if (!validationErrors.isEmpty()) {
-        return next(new HttpError('Please provid your user name and password.', 400));
+        return next(new HttpError('Please provide your user name and password.', 400));
     }
 
     const {userName, password} = req.body;

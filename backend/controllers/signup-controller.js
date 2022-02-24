@@ -15,7 +15,6 @@ const createUser = async (req, res, next) => {
   //get params from request bodyfgetUserByUserName
   const { userName, password, ownerName, dogName, city, description } =
     req.body;
-console.log("here");
   //TO-DO
   //input validation
 
