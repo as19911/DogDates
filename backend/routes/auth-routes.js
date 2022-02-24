@@ -1,4 +1,5 @@
 const express = require('express');
+const { check } = require('express-validator');
 
 const controller = require('../controllers/auth-controller');
 
@@ -7,7 +8,10 @@ const router = express.Router();
 //new user sign up
 router.post('/signup', controller.createUser);
 
-//get the user by id
-//router.post('/login', controller.userLogin);
+//user login
+router.post('/login', [
+    check('userName').not().isEmpty(),
+    check('password').not().isEmpty(),
+], controller.userLogin);
 
 module.exports = router;
