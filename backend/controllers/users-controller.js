@@ -23,32 +23,6 @@ const getUserById = (req, res, next) => {
     res.status(201).json(user);
 }
 
-
-const createUser = (req, res, next) => {
-    const newId = fakeUsersDB.length+1;
-
-    //get params from request body
-    const {userName, dogName, city, profileImage, email, password} = req.body;
-
-    //create a user
-    const newUser = {
-        id: newId,
-        userName,
-        dogName,
-        city,
-        profileImage,
-        email,
-        password
-    };
-
-    //add user to the fake DB
-    fakeUsersDB.push(newUser);
-
-
-    res.status(201).json(newUser);
-}
-
-
 const updateUserById = (req, res, next) => {
     const uid = req.params.uid;
 

@@ -5,8 +5,6 @@ const controller = require('../controllers/auth-controller');
 
 const router = express.Router();
 
-//new user sign up
-router.post('/signup', controller.createUser);
 
 //user login
 router.post('/login', [

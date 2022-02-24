@@ -9,7 +9,7 @@ const usersRoutes = require('./routes/users-routes');
 const likeRoutes = require('./routes/like-routes');
 const matchRoutes = require('./routes/match-routes');
 const authRoutes = require('./routes/auth-routes');
-
+const signupRoutes = require('./routes/signup-routes');
 
 const DB_URL = 'mongodb+srv://' + process.env.DB_USER + ':' + process.env.DB_PASSWORD + '@cluster0.hxpf1.mongodb.net/dogDatesDB?retryWrites=true&w=majority';
 const app = express();
@@ -31,6 +31,7 @@ app.use('/api/auth',authRoutes);
 app.use('/api/users', usersRoutes);
 app.use('/api/like', likeRoutes);
 app.use('/api/match', matchRoutes);
+app.use('/api/signup', signupRoutes);
 
 //handle errors
 //unsupported route 
