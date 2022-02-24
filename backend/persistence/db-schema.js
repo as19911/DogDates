@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
+    uid:{ type: String, require: true},
     userName: { type: String, required: true },
     password: { type: String, required: true }, //should be the hash value of the password
     ownerName: { type: String, required: true },
@@ -16,12 +17,12 @@ const userSchema = new Schema({
 
 const likedListSchema = new Schema({
     userName: { type: String, required: true },
-    liked: [String]
+    liked: [String] //array of uid
 });
 
 const matchedListSchema = new Schema({
     userName: { type: String, required: true },
-    liked: [String]
+    liked: [String] //array of uid
 });
 
 const UserModel = mongoose.model('User', userSchema);
