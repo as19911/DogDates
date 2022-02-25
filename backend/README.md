@@ -17,13 +17,6 @@ Get the list of users.
 ### `GET /api/users/:id` 
 Get the user by id.   
 
-### `POST /api/users/` 
-Create a user.   
-Parameters:
-* email
-* dogName
-* city
-
 ### `PATCH /api/users/:id` 
 Update user's info by id.   
 Parameters:
@@ -54,6 +47,19 @@ Get the list of user's matched users
 Update a user's matched list
 Parameters:
 * Matched user's id
+
+## End point: /api/signup
+
+### `POST /api/signup/` 
+Create user
+Parameters:
+* email
+* password
+* ownerName
+* dogName
+* city
+* description
+
 
 # How to test this API
 You can use [postman](https://www.postman.com/) to test the API, please install the desktop agent from postman if you're testing the API locally. The default address for this API is http://localhost:5000 .
