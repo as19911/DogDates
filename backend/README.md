@@ -7,9 +7,36 @@
 This is the blueprint of the API for sprint 2.
 [API Documentation and Mock API](https://app.swaggerhub.com/apis/sammulto/DogDates/1.0.0#/)
 
+# About protected API endpoints
+Call to protected API endpoints required a token attached to the request header.   
+The request header should include:   
+* Authorization: <token>   
+
+
 # Current Supported API Calls
 
-## End point: /api/users
+## Unprotected End point: /api/signup 
+
+### `POST /api/signup` 
+Create user
+Parameters:
+* email
+* password
+* ownerName
+* dogName
+* city
+* description
+* picture
+
+## Unprotected End point: /api/auth/login
+
+### `POST /api/auth/login` 
+User log in
+Parameters:
+* email
+* password
+
+## Protected End point: /api/users
 
 ### `GET /api/users/` 
 Get the list of users.   
@@ -28,7 +55,10 @@ Parameters:
 Delete user's info by id.   
 
 
-## End point: /api/like
+-------------------------
+# To Be Implemented API Calls
+
+## Protected End point: /api/like
 
 ### `GET /api/like/:id` 
 Get the list of the user's liked users
@@ -38,7 +68,7 @@ update the user's list
 Parameters:
 * Liked User's id
 
-## End point: /api/match
+## Protected End point: /api/match
 
 ### `GET /api/match/:id` 
 Get the list of user's matched users
@@ -47,18 +77,6 @@ Get the list of user's matched users
 Update a user's matched list
 Parameters:
 * Matched user's id
-
-## End point: /api/signup
-
-### `POST /api/signup/` 
-Create user
-Parameters:
-* email
-* password
-* ownerName
-* dogName
-* city
-* description
 
 
 # How to test this API
