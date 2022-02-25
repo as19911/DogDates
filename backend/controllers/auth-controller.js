@@ -1,7 +1,6 @@
 const bcrypt = require('bcryptjs');
 const webtoken = require('jsonwebtoken');
 const { validationResult } = require('express-validator');
-const uuid = require('uuid');
 
 const HttpError = require('../models/http-error');
 const {UserModel} = require('../persistence/db-schema');
@@ -59,11 +58,10 @@ const userLogin = async (req, res, next) => {
 
     //generate token
     let newToken;
-
     try {
         newToken = webtoken.sign(
             {uid: existingUser.uid, email: existingUser.email}, 
-            'thisSecretIsNotASecret', {expiresIn: '12h'}
+            'thisSecretIsNotASecret', {expiresIn: '4h'}
         );
     }catch(error){
         console.log('Error in TOKEN generation');
