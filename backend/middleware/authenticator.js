@@ -7,7 +7,6 @@ module.exports = (req, res, next) => {
     
     try {
         //get token from request header
-        console.log(req.headers);
         const token = req.headers.authorization.split(' ')[1];
         if (!token) {
             throw new Error('Not token is provided.');
