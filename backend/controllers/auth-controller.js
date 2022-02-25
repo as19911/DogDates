@@ -18,7 +18,7 @@ const userLogin = async (req, res, next) => {
         return next(new HttpError('Please provide your user name and password.', 400));
     }
 
-    const {userName, password} = req.body;
+    const {email, password} = req.body;
     
     //validate input
 
@@ -26,7 +26,7 @@ const userLogin = async (req, res, next) => {
     let existingUser;
 
     try{
-        existingUser = await getUserByUserName(userName);
+        existingUser = await getUserByEmail(email);
     }catch (error){
         return next(error);
     }
@@ -62,7 +62,7 @@ const userLogin = async (req, res, next) => {
 
     try {
         newToken = webtoken.sign(
-            {uid: existingUser.uid, userName: existingUser.userName}, 
+            {uid: existingUser.uid, email: existingUser.email}, 
             'thisSecretIsNotASecret', {expiresIn: '12h'}
         );
     }catch(error){
@@ -84,17 +84,17 @@ const userLogin = async (req, res, next) => {
     response.password = undefined;
     response._id = undefined;
     response.__v = undefined;
-    console.log(response.userName + '  has logged in');
+    console.log(response.email + '  has logged in');
     res.status(200).json(response);
 };
 
 
-const getUserByUserName = async (userName) => {
+const getUserByEmail = async (email) => {
     
     let user = false;
 
     try{
-        let result = await UserModel.find({ userName: userName }).exec();
+        let result = await UserModel.find({ email: email }).exec();
         if(result.length !== 0){
             user = result[0];
         }

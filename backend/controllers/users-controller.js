@@ -1,5 +1,4 @@
 const HttpError = require("../models/http-error");
-const fs = require("fs");
 const { UserModel } = require("../persistence/db-schema");
 
 const DBfailedHttpError = new HttpError(
@@ -38,7 +37,7 @@ const updateUserById = async (req, res, next) => {
   const uid = req.params.uid;
 
   //get params from request body
-  const { userName, dogName, city } = req.body;
+  const { email, dogName, city } = req.body;
   let user = null;
 
   //update user info
@@ -52,7 +51,7 @@ const updateUserById = async (req, res, next) => {
   else {
     UserModel.findByIdAndUpdate(
       user._id,
-      { userName: userName, city: city, dogName: dogName },
+      { email: email, city: city, dogName: dogName },
       function (error) {
         if (error) return next(DBfailedHttpError);
       }

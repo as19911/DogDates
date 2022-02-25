@@ -12,23 +12,23 @@ const DBfailedHttpError = new HttpError(
 );
 
 const createUser = async (req, res, next) => {
-  //get params from request bodyfgetUserByUserName
-  const { userName, password, ownerName, dogName, city, description } =
+  //get params from request bodygetUserByEmail
+  const { email, password, ownerName, dogName, city, description } =
     req.body;
   //TO-DO
   //input validation
 
-  //check if userName already exists
+  //check if email already exists
   let userExists = true;
 
   try {
-    userExists = await getUserByUserName(userName);
+    userExists = await getUserByEmail(email);
   } catch (error) {
     return next(error);
   }
 
   if (userExists) {
-    console.log("User: " + userName + " already exists.");
+    console.log("User: " + email + " already exists.");
     return next(
       new HttpError(
         "User name already exists, please choose a new user name.",
@@ -51,7 +51,7 @@ const createUser = async (req, res, next) => {
   let newToken;
   try {
     newToken = webtoken.sign(
-      { uid: newUid, userName: userName },
+      { uid: newUid, email: email },
       "thisSecretIsNotASecret",
       { expiresIn: "12h" }
     );
@@ -63,7 +63,7 @@ const createUser = async (req, res, next) => {
   //create a user
   const newUser = new UserModel({
     uid: newUid,
-    userName,
+    email,
     password: hashedPassword,
     ownerName,
     dogName,
@@ -81,7 +81,7 @@ const createUser = async (req, res, next) => {
     return next(DBfailedHttpError);
   }
 
-  console.log("New User: " + newUser.userName + " is created.");
+  console.log("New User: " + newUser.email + " is created.");
 
   //TO-DO
   //Handle image upload
@@ -95,11 +95,11 @@ const createUser = async (req, res, next) => {
   res.status(201).json(response);
 };
 
-const getUserByUserName = async (userName) => {
+const getUserByEmail = async (email) => {
   let user = false;
 
   try {
-    let result = await UserModel.find({ userName: userName }).exec();
+    let result = await UserModel.find({ email: email }).exec();
     if (result.length !== 0) {
       user = result[0];
     }

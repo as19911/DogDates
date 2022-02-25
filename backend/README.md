@@ -20,14 +20,14 @@ Get the user by id.
 ### `POST /api/users/` 
 Create a user.   
 Parameters:
-* userName
+* email
 * dogName
 * city
 
 ### `PATCH /api/users/:id` 
 Update user's info by id.   
 Parameters:
-* userName
+* email
 * dogName
 * city
 

@@ -8,7 +8,7 @@ const router = express.Router();
 
 //user login
 router.post('/login', [
-    check('userName').not().isEmpty(),
+    check('email').not().isEmpty(),
     check('password').not().isEmpty(),
 ], controller.userLogin);
 

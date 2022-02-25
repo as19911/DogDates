@@ -1,6 +1,5 @@
 [
     {
-     "userName": "userName 1",
      "dogName": "dogName 1",
      "city": "Winnipeg",
      "profileImage": "https://i.guim.co.uk/img/media/fe1e34da640c5c56ed16f76ce6f994fa9343d09d/0_174_3408_2046/master/3408.jpg?width=1200&height=1200&quality=85&auto=format&fit=crop&s=67773a9d419786091c958b2ad08eae5e",
@@ -9,7 +8,6 @@
      "id": "1"
     },
     {
-     "userName": "userName 2",
      "dogName": "dogName 2",
      "city": "Winnipeg",
      "profileImage": "https://i.guim.co.uk/img/media/fe1e34da640c5c56ed16f76ce6f994fa9343d09d/0_174_3408_2046/master/3408.jpg?width=1200&height=1200&quality=85&auto=format&fit=crop&s=67773a9d419786091c958b2ad08eae5e",
@@ -18,7 +16,6 @@
      "id": "2"
     },
     {
-     "userName": "userName 3",
      "dogName": "dogName 3",
      "city": "Hamilton",
      "profileImage": "https://i.guim.co.uk/img/media/fe1e34da640c5c56ed16f76ce6f994fa9343d09d/0_174_3408_2046/master/3408.jpg?width=1200&height=1200&quality=85&auto=format&fit=crop&s=67773a9d419786091c958b2ad08eae5e",
@@ -27,7 +24,6 @@
      "id": "3"
     },
     {
-     "userName": "userName 4",
      "dogName": "dogName 4",
      "city": "Oakvill",
      "profileImage": "https://i.guim.co.uk/img/media/fe1e34da640c5c56ed16f76ce6f994fa9343d09d/0_174_3408_2046/master/3408.jpg?width=1200&height=1200&quality=85&auto=format&fit=crop&s=67773a9d419786091c958b2ad08eae5e",
@@ -36,7 +32,6 @@
      "id": "4"
     },
     {
-     "userName": "userName 5",
      "dogName": "dogName 5",
      "city": "RichmondHill",
      "profileImage": "https://i.guim.co.uk/img/media/fe1e34da640c5c56ed16f76ce6f994fa9343d09d/0_174_3408_2046/master/3408.jpg?width=1200&height=1200&quality=85&auto=format&fit=crop&s=67773a9d419786091c958b2ad08eae5e",
