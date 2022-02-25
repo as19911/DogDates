@@ -17,12 +17,12 @@ const userSchema = new Schema({
 });
 
 const likedListSchema = new Schema({
-    email: { type: String, required: true },
+    uid: { type: String, required: true },
     liked: [String] //array of uid
 });
 
 const matchedListSchema = new Schema({
-    email: { type: String, required: true },
+    uid: { type: String, required: true },
     liked: [String] //array of uid
 });
 
