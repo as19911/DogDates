@@ -5,7 +5,7 @@ name: Frontend Testing
 
 on:
   push:
-    paths: ['frontend']
+    paths: ['frontend**']
 
 jobs:
   frontend:
