@@ -10,7 +10,8 @@ const DBfailedHttpError = new HttpError(
 /** TODO: Add validations to all the fields */
 
 const getUserList = async (req, res, next) => {
-  const users = await UserModel.find().exec();
+  //hide the sensitive properties from query results 
+  const users = await UserModel.find().select('-password -token -email -_id -__v').exec();
   res.status(201).json(users);
 };
 
@@ -19,7 +20,7 @@ const getUserById = async (req, res, next) => {
 
   let user = false;
   try {
-    let result = await UserModel.find({ uid: uid }).exec();
+    let result = await UserModel.find({ uid: uid }).select('-password -token -email -_id -__v').exec();
     if (result.length !== 0) {
       user = result[0];
     }
@@ -43,13 +44,20 @@ const updateUserById = async (req, res, next) => {
   }
 
   const uid = req.params.uid;
+  const inputUid = req.params.uid;
+  const tokenUid = req.userData.uid;
+
+  //verify if the token holder's uid matchs the req's uid
+  if(inputUid !== tokenUid){
+    return next(new HttpError("User doesn't match with the token!", 404));
+  }
 
   //get params from request body
   const { email, dogName, city } = req.body;
   let user = null;
 
   //update user info
-  const result = await UserModel.find({ uid: uid }).exec();
+  const result = await UserModel.find({ uid: inputUid }).exec();
   if (result.length !== 0) user = result[0];
 
   //return error if uid is not valid
@@ -71,10 +79,17 @@ const updateUserById = async (req, res, next) => {
 };
 
 const deleteUserById = async (req, res, next) => {
-  const uid = req.params.uid;
+  const inputUid = req.params.uid;
+  const tokenUid = req.userData.uid;
+
+  //verify if the token holder's uid matchs the req's uid
+  if(inputUid !== tokenUid){
+    return next(new HttpError("User doesn't match with the token!", 404));
+  }
+
   let user = null;
 
-  const result = await UserModel.find({ uid: uid }).exec();
+  const result = await UserModel.find({ uid: inputUid }).exec();
   if (result.length !== 0) user = result[0];
 
   //return error if uid is not valid
