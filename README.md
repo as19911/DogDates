@@ -36,7 +36,11 @@ This project will be similar to a dating app but will be for making playdates fo
 * Database: MongoDB
 
 ## Architecture Design
+### System Architecture
 ![System architecture block diagram](https://github.com/Aiphox/DogDates/blob/main/System%20Architecture.PNG)
+
+### Backend Class Architecture Diagram
+![System architecture block diagram](https://github.com/Aiphox/DogDates/blob/main/Class%20Diagram.PNG)
 
 ## Meeting Minutes
 * Meeting minutes can be found [here](https://github.com/Aiphox/DogDates/wiki/Meetings-Tracking#meeting-minutes).
