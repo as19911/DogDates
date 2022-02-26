@@ -2,12 +2,13 @@ const express = require("express");
 const { check } = require("express-validator");
 
 const controller = require("../controllers/signup-controller");
-
+const fileUpload = require("../middleware/file-upload");
 const router = express.Router();
 
 //new user sign up
 router.post(
   "/",
+  fileUpload.single("pictures"),
   [
     check("email").normalizeEmail().isEmail(),
     check("password").isLength({ min: 6 }),

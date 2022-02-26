@@ -2,6 +2,8 @@
 
 require('dotenv').config();
 
+const fs = require('fs');
+
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
@@ -35,7 +37,8 @@ app.use((req, res, next) => {
 app.use(bodyParser.json());
 
 //parse multipart/form-data
-app.use(upload.array()); 
+//app.use(upload.array()); 
+app.use('/upload/pictures', express.static(path.join('upload', 'pictures')));
 
 //handle user signup and authentication
 app.use('/api/signup', signupRoutes);
@@ -54,8 +57,8 @@ app.use('/api/users', usersRoutes);
 app.use('/api/like', likeRoutes);
 app.use('/api/match', matchRoutes);
 
-//handle image request
-app.use('/uploads/images', express.static(path.join('uploads', 'images')));
+//handle pictures request
+app.use('/upload/pictures', express.static(path.join('upload', 'pictures')));
 
 //handle errors
 //unsupported route error
@@ -66,9 +69,14 @@ app.use((req, res, next)=> {
 
 //other errors
 app.use((err, req, res, next) => {
-    if (res.headerSent) {
-      return next(err);
-    }
+  if(req.file) {
+    fs.unlink(req.file.path, (err) => {
+      console.log(err);
+    });
+  }
+  if (res.headerSent) {
+    return next(err);
+  }
     res.status(err.code || 500)
     res.json({error: err.message || 'Something went wrong!'});
   });

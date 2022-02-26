@@ -21,8 +21,6 @@ const createUser = async (req, res, next) => {
 
   //get params from request bodygetUserByEmail
   const { email, password, ownerName, dogName, city, description } = req.body;
-  //TO-DO
-  //input validation
 
   //check if email already exists
   let userExists = true;
@@ -73,7 +71,7 @@ const createUser = async (req, res, next) => {
     dogName,
     city,
     description,
-    pictures: ["test.pic"],
+    pictures: req.file.path,
     token: newToken,
   });
 
@@ -87,8 +85,6 @@ const createUser = async (req, res, next) => {
 
   console.log("New User: " + newUser.email + " is created.");
 
-  //TO-DO
-  //Handle image upload
 
   //send response
   const response = newUser.toObject();
