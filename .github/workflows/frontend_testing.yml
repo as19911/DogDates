@@ -12,6 +12,6 @@ jobs:
       - uses: actions/checkout@v2
       - name: test frontend
         run: |
-          cd gamersnet_frontend
+          cd frontend
           npm ci
           npm test
