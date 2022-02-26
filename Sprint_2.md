@@ -20,6 +20,6 @@
   0.5: Complete testing plan following the given template (UMLearn -> Content-> Template)  
     upload testing plan on GitHub  
   1: Continuous integration is set up. More specially, you need to set up CI pipeline to enable 
-  1) auto build, 2) code review, 3) regression test (find more details in testing plan template) will be executed when a commit is pushed to a major branch.  
+  1) auto build, 2) manual code review, 3) regression test (find more details in testing plan template) will be executed when a commit is pushed to a major branch.  
     1: set up the CI. When a commit pushed to major branch (at least works at the end of sprint 2), it triggers auto build, code review, and regression testing.   -0.3 if any of above tasks is missed.   
     0: do not set up CI at the end of Sprint 2.  
