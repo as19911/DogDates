@@ -12,9 +12,15 @@ const DBfailedHttpError = new HttpError(
 );
 
 const createUser = async (req, res, next) => {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return next(
+      new HttpError("Invalid inputs passed, please check your data.", 422)
+    );
+  }
+
   //get params from request bodygetUserByEmail
-  const { email, password, ownerName, dogName, city, description } =
-    req.body;
+  const { email, password, ownerName, dogName, city, description } = req.body;
   //TO-DO
   //input validation
 
@@ -28,7 +34,6 @@ const createUser = async (req, res, next) => {
   }
 
   if (userExists) {
-    console.log("User: " + email + " already exists.");
     return next(
       new HttpError(
         "User name already exists, please choose a new user name.",
@@ -42,7 +47,6 @@ const createUser = async (req, res, next) => {
   try {
     hashedPassword = await bcrypt.hash(password, 10);
   } catch (error) {
-    console.log("Error in HASH password");
     return next(new HttpError("Something went wrong, please try again.", 500));
   }
 
