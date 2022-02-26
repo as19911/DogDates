@@ -1,7 +1,7 @@
 # Sprint 2
 
 ## Design and Architecture
-  0.5: class diagram (each class should include attribute and method)
+  0.5: class diagram (each class should include attribute and method)  
     0.5: class diagram & consistent 0.0~0.4: inconsistent with your system / incomplete
 
 ## Progress
