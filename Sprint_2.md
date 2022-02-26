@@ -1,4 +1,4 @@
-# Sprint 2
+# Sprint 2 - Due March 6
 
 ## Design and Architecture
   0.5: class diagram (each class should include attribute and method)  
