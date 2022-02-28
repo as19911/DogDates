@@ -36,31 +36,14 @@
     background-color: #2669f8;
   }
 
-.imageUpload{
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    position: absolute;
-    top: 0em;
-    left: 0em;
-    height: 110%;
-    width: 120%;
-    border: 0.2em solid #DADCE0;
-    border-radius: 1em;
-    font-size: 1em;
-    padding: 2em 2em;
-    outline: none;
-    background: none;
-    z-index: 1;
-}
-
 .errorMessage {
-    position: absolute;
-    top: 1.2em;
+    position: relative;
+    top: -10em;
     right: 0.2em;
     padding: 0 0.4em;
     background-color: white;
     color: #eb0404;
     font-weight: 500;
     font-size: 1em;
+    z-index: 2;
 }

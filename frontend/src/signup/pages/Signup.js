@@ -6,17 +6,33 @@ import * as Yup from 'yup';
 import './Signup.css'
 import TextInput from '../../shared/components/FormElements/TextInput';
 import Select from '../../shared/components/FormElements/Select';
+import ImageUpload from '../../shared/components/FormElements/ImageUpload';
+import axios from 'axios';
 
-const Signup = ({ label, ...props }) => {
+const Signup = ( ) => {
 
-  const signupSubmitHandler = (values) => {
-    console.log(values.email);
+  const signupSubmitHandler = async (values) => {
     console.log(JSON.stringify(values, null, 6));
     console.log({ 
       fileName: values.image.name, 
       type: values.image.type,
       size: `${values.image.size} bytes`
     })
+
+    //Call backend API
+    const FormData = require('form-data');
+
+    const formData = new FormData();
+    formData.append('email', values.email);
+
+    const httpRes = await axios.post('http://localhost:5000/api/signup', formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data'
+      }
+    });
+
+    console.log(httpRes);
+
   };
 
   return (
@@ -47,40 +63,38 @@ const Signup = ({ label, ...props }) => {
             image: Yup.mixed().test(
               "File Size", 
               "File is too large", 
-              (value) => { return (value&&value.size <= 2000000);}
-            ).test(
-              "File Type",
-              "Only accept: .jpeg, .jpg, .png", 
-              (value) => {
-                return (value && (
-                value.type === "image/jpeg" ||
-                value.type === "image/png" ||
-                value.type === "image/jepg"));
-            })
+              (value) => { return (value&&value.size <= 1048576);}
+            )
           })}
           onSubmit={signupSubmitHandler} 
         >
+
           {({ errors, touched, setFieldValue }) => (
-          <Form className="form">
-            <h1 className="title">Sign up</h1>
-            <TextInput name="email" label="Email" type="text"/>
-            <TextInput name="password" label="Password" type="password"/>
-            <TextInput name="ownerName" label="My Name" type="text"/>
-            <TextInput name="dogName" label="My Puppy's Name" type="text"/>
-            <Select name="city" label="City">
-              <option value="">Select A City</option>
-              <option value="Winnipeg">Winnipeg</option>
-              <option value="Toronto">Toronto</option>
-            </Select>
-            <TextInput name="description" label="About Me And My Puppy" type="text"/>
-            <div className="inputBox">
-              <input className="imageUpload" name="image" type="file" onChange={(event) => {
-                setFieldValue("image", event.currentTarget.files[0]);}}/>
-              <label className="label">Upload A Picture Of You With Your Puppy</label>
+            //sign up form
+            <Form className="form">
+              <h1 className="title">Sign up</h1>
+              <TextInput name="email" label="Email" type="text"/>
+              <TextInput name="password" label="Password" type="password"/>
+              <TextInput name="ownerName" label="My Name" type="text"/>
+              <TextInput name="dogName" label="My Puppy's Name" type="text"/>
+              <Select name="city" label="City">
+                <option value="">Select A City</option>
+                <option value="Winnipeg">Winnipeg</option>
+                <option value="Toronto">Toronto</option>
+              </Select>
+              <TextInput name="description" label="About Me And My Puppy" type="text"/>
+              <ImageUpload 
+                name="image"
+                id="image" 
+                label="Upload A Picture Of You With Your Puppy"
+                onInput={
+                  (id, pickedFile, fileIsValid) => {setFieldValue("image", pickedFile);}
+                }
+                errorText=" "
+              />
               {touched.image && errors.image ? (<div className="errorMessage">{errors.image}</div>) : null}
-            </div>
-            <input type="submit" className="signupBtn" value="Sign up"/>
-          </Form>
+              <input type="submit" className="signupBtn" value="Sign up"/>
+            </Form>
           )}
         </Formik>
       </div>
@@ -90,3 +104,17 @@ const Signup = ({ label, ...props }) => {
 
 
 export default Signup; 
+
+
+
+
+
+
+
+
+
+
+{/* <input className="imageUpload" name="image" type="file" onChange={(event) => {
+  setFieldValue("image", event.currentTarget.files[0]);}}/>
+<label className="label">Upload A Picture Of You With Your Puppy</label>
+{touched.image && errors.image ? (<div className="errorMessage">{errors.image}</div>) : null} */}
