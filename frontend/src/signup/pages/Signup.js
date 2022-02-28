@@ -2,36 +2,60 @@ import React, { useState } from 'react';
 import { render } from 'react-dom';
 import { Formik, Form} from 'formik';
 import * as Yup from 'yup';
+import axios from 'axios';
 
 import './Signup.css'
 import TextInput from '../../shared/components/FormElements/TextInput';
 import Select from '../../shared/components/FormElements/Select';
 import ImageUpload from '../../shared/components/FormElements/ImageUpload';
-import axios from 'axios';
+
 
 const Signup = ( ) => {
 
+  //hooks
+  const [showError, setShowError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
+
+  console.log(showError);
+
+  //handle signup form submit event
   const signupSubmitHandler = async (values) => {
-    console.log(JSON.stringify(values, null, 6));
-    console.log({ 
-      fileName: values.image.name, 
-      type: values.image.type,
-      size: `${values.image.size} bytes`
-    })
+    //console.log(JSON.stringify(values, null, 6));
+
+    setShowError(false);
+    
 
     //Call backend API
     const FormData = require('form-data');
-
     const formData = new FormData();
     formData.append('email', values.email);
+    formData.append('password', values.password);
+    formData.append('ownerName', values.ownerName);
+    formData.append('dogName', values.dogName);
+    formData.append('city', values.city);
+    formData.append('description', values.description);
+    formData.append('pictures', values.image);
+    
+    axios.post(
+      'http://localhost:5000/api/signup', formData, {
+          headers: {
+            'Content-Type': 'multipart/form-data'
+          }
+        }
+      ).then((response) => {
 
-    const httpRes = await axios.post('http://localhost:5000/api/signup', formData, {
-      headers: {
-        'Content-Type': 'multipart/form-data'
-      }
+      //handle API response
+      //console.log("UserID:");
+      // console.log(httpRes.data.uid);
+      // console.log("Token:");
+      // console.log(httpRes.data.token);
+
+      //save token and redirect to user's home page upon signup successfully
+
+    }).catch((error) =>{
+      setShowError(true);
+      setErrorMessage(error.response.data.error);
     });
-
-    console.log(httpRes);
 
   };
 
@@ -39,7 +63,6 @@ const Signup = ( ) => {
     <React.Fragment>
       <div className="formHolder">
         <Formik
-
         //form data schema
           initialValues={{
             email:'',
@@ -68,7 +91,6 @@ const Signup = ( ) => {
           })}
           onSubmit={signupSubmitHandler} 
         >
-
           {({ errors, touched, setFieldValue }) => (
             //sign up form
             <Form className="form">
@@ -93,6 +115,7 @@ const Signup = ( ) => {
                 errorText=" "
               />
               {touched.image && errors.image ? (<div className="errorMessage">{errors.image}</div>) : null}
+              <div className="errorMessage" style={showError ? {display:"block"} : {display:"none"}}> {errorMessage} </div>
               <input type="submit" className="signupBtn" value="Sign up"/>
             </Form>
           )}
@@ -102,19 +125,4 @@ const Signup = ( ) => {
   );
 };
 
-
 export default Signup; 
-
-
-
-
-
-
-
-
-
-
-{/* <input className="imageUpload" name="image" type="file" onChange={(event) => {
-  setFieldValue("image", event.currentTarget.files[0]);}}/>
-<label className="label">Upload A Picture Of You With Your Puppy</label>
-{touched.image && errors.image ? (<div className="errorMessage">{errors.image}</div>) : null} */}

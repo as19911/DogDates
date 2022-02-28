@@ -2,21 +2,22 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 80vh;
+    height: 90vh;
+
   }
 
 .form {
     background-color: white;
     width: 50em;
     border-radius: 2em;
-    padding: 2em 8em 6em 8em;
+    padding: 1.5em 5em 1.5em 5em;
     box-shadow: 0 1em 2em #083D77;
 }
 
 .title {
     color: #03305f;
     font-size: 3em;
-    margin-bottom: 1em;
+    margin-bottom: 0.3em;
 }
 
 .signupBtn {
