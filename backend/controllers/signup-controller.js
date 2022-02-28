@@ -63,6 +63,11 @@ const createUser = async (req, res, next) => {
   }
 
   //create a user
+  let picturePath = "default";
+  if(req.file){
+    console.log(req.file);
+    picturePath = req.file.path;
+  }
   const newUser = new UserModel({
     uid: newUid,
     email,
@@ -71,7 +76,7 @@ const createUser = async (req, res, next) => {
     dogName,
     city,
     description,
-    pictures: req.file.path,
+    pictures: picturePath,
     token: newToken,
   });
 
