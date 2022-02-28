@@ -2,7 +2,7 @@ const multer = require("multer");
 const uuid = require("uuid");
 
 const MIME_TYPE_MAP = {
-  "image/pgn": "png",
+  "image/png": "png",
   "image/jpeg": "jpeg",
   "image/jpg": "jpg",
 };
