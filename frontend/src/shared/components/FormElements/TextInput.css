@@ -1,11 +1,11 @@
-.inputBox {
+.text-inputBox {
     position: relative;
     height: 4em;
     width: 80%;
     margin-bottom: 1em;
 }
 
-.input{
+.text-input{
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
@@ -23,7 +23,7 @@
     z-index: 1;
 }
 
-.label {
+.text-label {
     position: absolute;
     top: 0em;
     left: 1em;
@@ -35,7 +35,7 @@
     z-index: 0;
 }
 
-.input:focus + label{
+.text-input:focus + .text-label{
     top: -0.5em;
     left: 0.5em;
     z-index: 10;
@@ -44,7 +44,7 @@
     color: #0a65c7;
 }
 
-.errorMessage {
+.text-errorMessage {
     position: absolute;
     top: 1.2em;
     right: 0.2em;

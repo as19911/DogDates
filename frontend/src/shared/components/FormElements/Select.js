@@ -6,11 +6,11 @@ import './Select.css'
 const Select = ({ ...props }) => {
     const [field, meta] = useField(props);
     return (
-      <div className="inputBox">
-        <select className="select" {...field} {...props} />
-        <label className="label" htmlFor={props.id||props.name}>{props.label}</label>
+      <div className="select-inputBox">
+        <select className="select-input" {...field} {...props} />
+        <label className="select-label" htmlFor={props.id||props.name}>{props.label}</label>
         {meta.touched && meta.error ? (
-          <div className="errorMessage">{meta.error}</div>
+          <div className="select-errorMessage">{meta.error}</div>
         ) : null}
       </div>
     );

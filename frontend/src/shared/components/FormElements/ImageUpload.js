@@ -40,7 +40,7 @@ export default function ImageUpload(props) {
   }
 
   return (
-    <div className="form-control">
+    <React.Fragment>
       <input
         id={props.id}
         ref={filePickerRef}
@@ -49,16 +49,17 @@ export default function ImageUpload(props) {
         accept=".jpg,.png,.jpeg"
         onChange={pickedHandler}
       />
+      <label className="image-label" htmlFor= "image-input">{props.label}</label>
       <div className={`image-upload ${props.center && "center"}`}>
         <div className="image-upload__preview">
           {previewUrl && <img src={previewUrl} alt="Preview" />}
-          {!previewUrl && <p>Please pick an image.</p>}
+          {!previewUrl && <p>Please upload an image.</p>}
         </div>
         <Button type="button" onClick={pickImageHandler}>
           PICK IMAGE
         </Button>
       </div>
       {!isValid && <p>{props.errorText}</p>}
-    </div>
+    </React.Fragment>
   );
 }
