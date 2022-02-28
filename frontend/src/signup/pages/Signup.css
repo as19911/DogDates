@@ -1,0 +1,49 @@
+.formHolder {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+  }
+
+.form {
+    background-color: white;
+    width: 50em;
+    border-radius: 2em;
+    padding: 2em 8em 6em 8em;
+    box-shadow: 0 1em 2em #083D77;
+}
+
+.title {
+    color: #03305f;
+    font-size: 3em;
+    margin-bottom: 1em;
+}
+
+.signupBtn {
+    display: block;
+    margin-left: auto;
+    padding: 1em 3em;
+    border: none;
+    background-color: #083D77;
+    color: white;
+    border-radius: 0.5em;
+    cursor: pointer;
+    font-size: 1em;
+    margin-top: 3em;
+  }
+  
+.signupBtn:hover {
+    background-color: #2669f8;
+  }
+
+.errorMessage {
+    position: relative;
+    top: -10em;
+    right: 0.2em;
+    padding: 0 0.4em;
+    background-color: white;
+    color: #eb0404;
+    font-weight: 500;
+    font-size: 1em;
+    z-index: 2;
+}

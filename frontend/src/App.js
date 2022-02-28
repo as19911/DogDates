@@ -5,6 +5,7 @@ import MainNavigation from "./shared/components/Navigation/MainNavigation";
 
 import Home from "./home/pages/Home";
 import Login from "./login/pages/Login";
+import Signup from './signup/pages/Signup';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           />
 
           <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
         </Routes>
       </main>
     </Router>
